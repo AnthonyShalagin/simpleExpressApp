@@ -1,13 +1,10 @@
 const express = require('express'),
       app = express();
+//route serves both the form page and processes form data
 
-function sayHello(request, response, next){
-  console.log('I must be called');
-  next();
-}
-
-app.get('/', sayHello, (request, response)=>{
-  response.send('sayHello');
+app.get('/', (request, response)=>{
+  console.log(request.query);
+  response.sendFile(`${__dirname }/form.html`);
 });
 
 app.listen(3000, ()=>console.log('Express server started at port 3000'));
